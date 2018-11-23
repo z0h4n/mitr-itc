@@ -1,0 +1,39 @@
+{
+  "name": "in-time-calculator",
+  "version": "2.0.0",
+  "description": "A simple tool to calculate my in time office hours in realtime",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z0h4n/in-time-calculator.git"
+  },
+  "author": "z0h4n",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/z0h4n/in-time-calculator/issues"
+  },
+  "homepage": "https://github.com/z0h4n/in-time-calculator#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^1.0.0",
+    "cross-env": "^5.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.6.3",
+    "react-seven-segment-display": "^1.0.1"
+  }
+}
