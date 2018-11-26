@@ -1,5 +1,5 @@
 import React from 'react';
-import { SwipeInput, SwipeTable, TimeDisplay, Sessions, DayTypeSelector, Errors } from '@Components';
+import { SwipeInput, SwipeTable, TimeDisplay, Sessions, DayTypeSelector } from '@Components';
 import { SwipeClass, DateClass } from '@Classes';
 
 export default class App extends React.Component {
@@ -41,12 +41,11 @@ export default class App extends React.Component {
 
     return (
       <div className="container">
-        {this.state.swipeErrors ? <Errors count={this.state.swipeErrors.length} /> : null}
         <TimeDisplay time={timeTillLastOut + timeAfterLastIn} color={document.body.style.color} />
         <DayTypeSelector onDayTypeChange={this.onDayTypeChange} />
         <Sessions time={timeTillLastOut + timeAfterLastIn} dayType={dayType} lastSwipe={swipes.last()} />
-        <SwipeInput onInput={this.onInput} />
-        {swipes.length ? <SwipeTable swipes={swipes} /> : null}
+        <SwipeInput onInput={this.onInput} swipeErrors={this.state.swipeErrors} />
+        {swipes.length ? <SwipeTable swipes={swipes} swipeErrors={this.state.swipeErrors} /> : null}
       </div>
     )
   }

@@ -1,5 +1,5 @@
 {
-  "name": "in-time-calculator",
+  "name": "mitr-itc",
   "version": "2.0.0",
   "description": "A simple tool to calculate my in time office hours in realtime",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/z0h4n/in-time-calculator.git"
+    "url": "git+https://github.com/z0h4n/mitr-itc.git"
   },
   "author": "z0h4n",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/z0h4n/in-time-calculator/issues"
+    "url": "https://github.com/z0h4n/mitr-itc/issues"
   },
-  "homepage": "https://github.com/z0h4n/in-time-calculator#readme",
+  "homepage": "https://github.com/z0h4n/mitr-itc#readme",
   "devDependencies": {
     "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.5",
