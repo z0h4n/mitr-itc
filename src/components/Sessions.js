@@ -1,5 +1,5 @@
 import React from 'react';
-import { ControlLabel, ProgressBar } from 'react-bootstrap';
+import { ProgressBar } from 'react-bootstrap';
 import { DateClass } from '@Classes';
 
 const sessions = [
@@ -29,26 +29,41 @@ const sessions = [
   ]
 ];
 
-const COMPLETED_MSG = 'Complete';
+const COMPLETED_MSG = 'Session Complete';
+const TODAY = (new DateClass()).toDateString();
 
-function sessionLabel(remainingTime, isLastOut) {
+function ProgressText(props) {
+  const { label, sessionTime, remainingTime, isLastOut } = props;
+
   const completesOn = new DateClass(DateClass.now() + remainingTime);
+  const completesOnDate = completesOn.toDateString();
   const sessionComplete = remainingTime <= 0;
-  const style = {
-    whiteSpace: 'nowrap',
-    color: document.body.style.color,
-    margin: '0px 10px'
-  };
 
   return (
-    <div style={style}>
-      {
-        sessionComplete
-          ? COMPLETED_MSG
-          : `${DateClass.msecsToHHMMSS(remainingTime)}${isLastOut
+    <div style={{ display: 'grid', gridTemplateColumns: 'calc(100%/3) calc(100%/3) calc(100%/3)', fontWeight: 'bold', marginBottom: '5px' }}>
+      <div title="Session">
+        {label} | {DateClass.msecsToHHMM(sessionTime)}
+      </div>
+      <div style={{ textAlign: 'center' }} title="Remaining">
+        {
+          remainingTime >= sessionTime
             ? ''
-            : ` | ${completesOn.toLocaleString()}`}`
-      }
+            : sessionComplete
+              ? ''
+              : DateClass.msecsToHHMMSS(remainingTime)
+        }
+      </div>
+      <div style={{ textAlign: 'right' }} title="Completes On">
+        {
+          remainingTime >= sessionTime
+            ? ''
+            : sessionComplete
+              ? COMPLETED_MSG
+              : isLastOut
+                ? ''
+                : `${completesOnDate === TODAY ? '' : `${completesOnDate}, `}${completesOn.toLocaleTimeString()}`
+        }
+      </div>
     </div>
   );
 }
@@ -67,16 +82,17 @@ export default function Sessions(props) {
 
           return (
             <div key={i}>
-              <ControlLabel>
-                {current_sessions[i].label} | {DateClass.msecsToHHMM(current_sessions[i].time)}
-              </ControlLabel>
+              <ProgressText
+                label={current_sessions[i].label}
+                sessionTime={current_sessions[i].time}
+                remainingTime={r}
+                isLastOut={isLastOut} />
               <ProgressBar
                 bsStyle={isComplete ? 'success' : 'warning'}
                 max={current_sessions[i].time}
                 now={isComplete ? current_sessions[i].time : current_sessions[i].time - r}
                 striped={isComplete || isLastOut ? false : true}
-                active={isComplete || isLastOut ? false : true}
-                label={r < current_sessions[i].time ? sessionLabel(r, isLastOut) : ''} />
+                active={isComplete || isLastOut ? false : true} />
             </div>
           )
         })
