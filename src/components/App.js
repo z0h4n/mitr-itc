@@ -8,7 +8,7 @@ export default class App extends React.Component {
     this.onInput = this.onInput.bind(this);
     this.onDayTypeChange = this.onDayTypeChange.bind(this);
     this.tick = this.tick.bind(this);
-    this.state = { swipes: new SwipeClass(), timeTillLastOut: 0, timeAfterLastIn: 0, dayType: 0, swipeErrors: null, demoMode: true };
+    this.state = { swipes: new SwipeClass(), timeTillLastOut: 0, timeAfterLastIn: 0, dayType: 0, swipeErrors: null, demoMode: false };
   }
 
   onInput(value) {
