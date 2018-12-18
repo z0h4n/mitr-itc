@@ -48,8 +48,9 @@ export default class SwipeInput extends React.Component {
   }
 
   componentDidMount() {
+    window.addEventListener('message', this.onMessage);
+
     if (window.opener) {
-      window.addEventListener('message', this.onMessage);
       window.opener.postMessage({ component: 'SwipeInput', type: 'componentDidMount' }, '*');
     }
   }
