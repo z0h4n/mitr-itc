@@ -12,14 +12,6 @@ const sessions = [
       label: 'Full Day',
       time: DateClass.hrsToMsecs(8.5)
     },
-    {
-      label: 'Full Day + Half Day Compoff',
-      time: DateClass.hrsToMsecs(11.5)
-    },
-    {
-      label: 'Full Day + Full Day Compoff',
-      time: DateClass.hrsToMsecs(15.5)
-    }
   ],
   [
     {
